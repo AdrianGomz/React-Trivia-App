@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Fragment, useEffect, useState } from "react";
+import "./App.css";
+import Quiz from "./components/Quiz";
 function App() {
+  const [data, setData] = useState();
+
+  // const randomInt = (min, max) => {
+  //   return Math.floor(Math.random() * (max - min) + min);
+  // };
+
+  // Function for fetching the data
+  const fetchAPI = async () => {
+    const response = await fetch("https://triviaapi.azurewebsites.net/");
+    setData(await response.json());
+  };
+
+  // fetching data only once
+  useEffect(() => {
+    fetchAPI();
+  }, []);
+
+  // rendering application only once we get the data
+  if (!data) {
+    return <h1>Loading ...</h1>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Quiz data={data} />
+    </Fragment>
   );
 }
 
