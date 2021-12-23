@@ -1,0 +1,10 @@
+.btn-end {
+  border: none;
+  color: white;
+  background-color: #12a4d9;
+  border-radius: 1em;
+  padding: 1em;
+}
+.btn-end:hover {
+  border: solid;
+}

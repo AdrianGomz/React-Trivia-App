@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Quiz from "./components/Quiz";
 function App() {
@@ -21,13 +21,13 @@ function App() {
 
   // rendering application only once we get the data
   if (!data) {
-    return <h1>Loading ...</h1>;
+    return <h1 style={{ color: "white" }}>Loading ...</h1>;
   }
 
   return (
-    <Fragment>
+    <div className="container">
       <Quiz data={data} />
-    </Fragment>
+    </div>
   );
 }
 
