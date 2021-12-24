@@ -1,0 +1,12 @@
+.btn-start {
+  border: none;
+  background-color: #12a4d9;
+  padding: 1em;
+  margin: 1em;
+  width: 90%;
+  color: white;
+  border-radius: 1em;
+}
+.btn-start:hover {
+  border: solid;
+}

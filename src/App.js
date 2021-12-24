@@ -4,10 +4,6 @@ import Quiz from "./components/Quiz";
 function App() {
   const [data, setData] = useState();
 
-  // const randomInt = (min, max) => {
-  //   return Math.floor(Math.random() * (max - min) + min);
-  // };
-
   // Function for fetching the data
   const fetchAPI = async () => {
     const response = await fetch("https://triviaapi.azurewebsites.net/");

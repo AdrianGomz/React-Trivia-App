@@ -1,10 +1,12 @@
 import "./QuizEnd.css";
-const QuizEnd = ({ score }) => {
+const QuizEnd = ({ score, handleRestart }) => {
   return (
     <div>
       <h1>End</h1>
       <h2>Score: {score}</h2>
-      <button className="btn-end">Restart</button>
+      <button className="btn-end" onClick={handleRestart}>
+        Restart
+      </button>
     </div>
   );
 };
