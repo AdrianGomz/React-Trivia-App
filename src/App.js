@@ -15,7 +15,7 @@ function App() {
     fetchAPI();
   }, []);
 
-  // rendering application only once we get the data
+  // rendering application only when we get the data
   if (!data) {
     return <h1 style={{ color: "white" }}>Loading ...</h1>;
   }

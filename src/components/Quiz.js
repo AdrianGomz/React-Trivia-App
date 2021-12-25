@@ -6,11 +6,14 @@ import { useState } from "react";
 import "./Quiz.css";
 
 const randomInt = (min, max) => {
+  // This function generates random integers in the specified range
   return Math.floor(Math.random() * (max - min) + min);
 };
-const generateRandomList = (min, max, length) => {
+
+const generateRandomList = (min, max, n) => {
+  // This function creates a list of n random integers in the specified interval.
   const randomArray = [];
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < n; i++) {
     let n = randomInt(min, max);
     if (!randomArray.includes(n)) {
       randomArray.push(n);
@@ -18,6 +21,7 @@ const generateRandomList = (min, max, length) => {
       i--;
     }
   }
+  return randomArray;
 };
 
 const Quiz = ({ data }) => {
@@ -29,10 +33,12 @@ const Quiz = ({ data }) => {
     setQuestionNumber(questionNumber + 1);
   };
   const handleStart = (numOfQuestions) => {
+    // Sets the total number of questions in the quiz and set current Question to 1 to start the quiz
     setTotalNumberOfQuestions(numOfQuestions);
     nextQuestion();
   };
   const handleRestart = () => {
+    // resets all the values to 0, which takes us to the start page.
     setTotalNumberOfQuestions(0);
     setQuestionNumber(0);
     setScore(0);
@@ -47,12 +53,16 @@ const Quiz = ({ data }) => {
     return <QuizEnd score={score} handleRestart={handleRestart} />;
   }
 
-  // Render Quiz
+  // Question shuffling
+  const shuffleOrder = generateRandomList(
+    0,
+    data.length,
+    totalNumberOfQuestions
+  );
+  const currentQuestion = data[shuffleOrder[questionNumber - 1]];
 
-  const currentQuestion = data[questionNumber - 1];
-
-  let rightAns;
   // get the string of the right answer
+  let rightAns;
   switch (currentQuestion.correct_ans) {
     case "A":
       rightAns = currentQuestion.ansA;

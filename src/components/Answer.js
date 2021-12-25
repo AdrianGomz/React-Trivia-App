@@ -1,6 +1,5 @@
 import "./Answer.css";
 const Answer = ({ ans, nextQuestion, checkAns, color }) => {
-  console.log(color);
   return (
     <button
       onClick={() => {
